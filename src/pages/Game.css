@@ -1,0 +1,24 @@
+.game-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  background: #111;
+  gap: 16px;
+}
+
+.game-canvas {
+  width: min(900px, 95vw);
+  height: auto;
+  border: 0.5px solid #2A3F50;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+}
+
+.game-hint {
+  font-size: 13px;
+  color: #A0A8B0;
+  font-family: monospace;
+}

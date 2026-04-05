@@ -1,0 +1,118 @@
+.home {
+  padding: 2rem;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #E8EAED;
+  margin: 0;
+}
+
+.chart-section {
+  background: #1E2A35;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7EB8D4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem 0;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+.chart-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-size: 12px;
+  color: #A0A8B0;
+}
+
+.field-value {
+  font-size: 15px;
+  color: #E8EAED;
+}
+
+.chart-input {
+  background: #2A3F50;
+  border: 0.5px solid #3A5A72;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #E8EAED;
+  font-size: 14px;
+  outline: none;
+}
+
+.chart-input:focus {
+  border-color: #7EB8D4;
+}
+
+.chart-textarea {
+  width: 100%;
+  background: #2A3F50;
+  border: 0.5px solid #3A5A72;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #E8EAED;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.chart-textarea:focus {
+  border-color: #7EB8D4;
+}
+
+.chart-notes {
+  font-size: 14px;
+  color: #E8EAED;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.chart-btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 0.5px solid #3A5A72;
+  background: #2A3F50;
+  color: #7EB8D4;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chart-btn.save {
+  background: #2A4A44;
+  border-color: #2A9D8F;
+  color: #2A9D8F;
+}
+
+.chart-btn.cancel {
+  background: #3D2A2A;
+  border-color: #7C3A3A;
+  color: #C07070;
+}

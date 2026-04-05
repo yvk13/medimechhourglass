@@ -1,0 +1,71 @@
+.vitals-page {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+  gap: 0;
+  background: #111;
+}
+
+.waveform-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid #222;
+  padding: 1.8rem 0;
+}
+
+.waveform-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 100px;
+  display: block;
+}
+
+.vital-readout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 140px;
+  padding-left: 1rem;
+}
+
+.vital-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+.vital-value {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.vital-readout.green { color: #39ff6a; }
+.vital-readout.cyan  { color: #00e5ff; }
+.vital-readout.yellow { color: #ffe033; }
+
+.vitals-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0 0; 
+}
+
+.vital-big {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.vital-big.red { color: #ff3b3b; }
+
+.vital-unit {
+  font-size: 22px;
+  font-weight: 400;
+  opacity: 0.8;
+}

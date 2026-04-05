@@ -1,0 +1,125 @@
+/* Fullscreen overlay — covers entire page when dropdown is open */
+.navbar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.75);
+  cursor: not-allowed;
+}
+
+.pause-btn-active {
+  border-color: #C07070;
+  color: #C07070;
+}
+
+/* Navbar sits above the overlay */
+.navbar-wrapper {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+}
+
+.navbar-trigger {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 20px;
+  background: #1E2A35;
+  border: none;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trigger-page {
+  font-size: 15px;
+  font-weight: 500;
+  color: #7EB8D4;
+}
+
+.trigger-arrow {
+  font-size: 11px;
+  color: #A0A8B0;
+}
+
+.trigger-clock {
+  font-size: 22px;
+  font-weight: 400;
+  color: #E8EAED;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.trigger-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.trigger-patient {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-size: 13px;
+  color: #A0A8B0;
+  line-height: 1.6;
+}
+
+.trigger-patient strong {
+  color: #E8EAED;
+  font-weight: 500;
+}
+
+.pause-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #A0A8B0;
+  color: #A0A8B0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #1E2A35;
+  border-top: 0.5px solid #2A3F50;
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 22px 28px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #A0A8B0;
+  cursor: pointer;
+  border-bottom: 0.5px solid #2A3F50;
+  box-sizing: border-box;
+  outline: none;
+  transition: background 0.05s, color 0.05s;
+}
+
+.dropdown-item:hover,
+.dropdown-item-hovered {
+  background: #2A3F50;
+  color: #E8EAED;
+}
+
+.dropdown-item-active {
+  color: #7EB8D4;
+}

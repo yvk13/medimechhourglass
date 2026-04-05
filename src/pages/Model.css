@@ -1,0 +1,99 @@
+.model-page {
+  display: flex;
+  height: calc(100vh - 56px);
+  background: #111;
+  position: relative;
+}
+
+.model-canvas-wrap {
+  flex: 1;
+  position: relative;
+  cursor: grab;
+}
+
+.model-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+.model-loading,
+.model-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  color: #7EB8D4;
+  z-index: 10;
+}
+
+.model-error {
+  color: #C07070;
+}
+
+/* Edge buttons — sit on the edges of the canvas */
+.model-edge-btn {
+  position: absolute;
+  z-index: 10;
+  background: rgba(30, 42, 53, 0.75);
+  border: 0.5px solid #3A5A72;
+  color: #7EB8D4;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.05s, border-color 0.05s;
+  user-select: none;
+  backdrop-filter: blur(4px);
+}
+
+.model-edge-btn:hover,
+.model-btn-active {
+  background: rgba(58, 90, 114, 0.9);
+  border-color: #7EB8D4;
+  color: #E8EAED;
+}
+
+/* Left — tall strip on the left edge */
+.model-edge-left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 120px;
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+}
+
+/* Right — tall strip on the right edge */
+.model-edge-right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 120px;
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+}
+
+/* Top — wide strip on the top edge */
+.model-edge-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 52px;
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+}
+
+/* Bottom — wide strip on the bottom edge */
+.model-edge-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 52px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
