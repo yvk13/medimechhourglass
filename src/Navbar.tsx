@@ -89,7 +89,7 @@ export default function Navbar() {
       )}
 
       <div className="navbar-wrapper">
-        <button className="navbar-trigger" onClick={() => setOpen(o => !o)}>
+        <div className="navbar-trigger" onClick={() => setOpen(o => !o)}>
           <div className="trigger-left">
             <span className="trigger-page">{currentPage}</span>
             <span className="trigger-arrow">{open ? "▲" : "▼"}</span>
@@ -112,7 +112,7 @@ export default function Navbar() {
               {paused ? "▶" : "⏸"}
             </button>
           </div>
-        </button>
+        </div>
 
         {open && (
           <div className="navbar-dropdown" ref={dropdownRef}>

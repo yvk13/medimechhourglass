@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePatient } from "../PatientContext";
 import "./Vitals.css";
 
@@ -7,11 +7,14 @@ interface WaveformProps {
   generatePoint: (t: number) => number;
   offsetRef: React.MutableRefObject<number>;
   paused: boolean;
+  reset: boolean;
 }
 
-function Waveform({ color, generatePoint, offsetRef, paused }: WaveformProps) {
+function Waveform({ color, generatePoint, offsetRef, paused, reset }: WaveformProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointsRef = useRef<number[]>([]);
+
+  const fadeRef = useRef(1);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -20,6 +23,12 @@ function Waveform({ color, generatePoint, offsetRef, paused }: WaveformProps) {
     const width = canvas.width;
     const height = canvas.height;
     const speed = 2;
+
+    if (reset) {
+      fadeRef.current = 1;
+    } else {
+      fadeRef.current = 0;
+    }
 
     if (pointsRef.current.length === 0) {
       pointsRef.current = Array(width).fill(height / 2);
@@ -30,9 +39,24 @@ function Waveform({ color, generatePoint, offsetRef, paused }: WaveformProps) {
     const animate = () => {
       animId = requestAnimationFrame(animate);
 
-      offsetRef.current += speed;
+      if (reset) {
+        if (fadeRef.current > 0) {
+          fadeRef.current = Math.max(0, fadeRef.current - 0.01);
+        }
+        offsetRef.current += speed;
+      } else {
+        if (fadeRef.current < 1) {
+          fadeRef.current = Math.min(1, fadeRef.current + 0.01)
+        }
+        offsetRef.current += speed;
+      }
+
+      const rawPoint = generatePoint(offsetRef.current);
+      const midline = height / 2;
+      const fadedPoint = midline + (rawPoint - midline) * fadeRef.current;
+
       pointsRef.current.shift();
-      pointsRef.current.push(generatePoint(offsetRef.current));
+      pointsRef.current.push(fadedPoint);
 
       ctx.clearRect(0, 0, width, height);
       ctx.beginPath();
@@ -50,7 +74,7 @@ function Waveform({ color, generatePoint, offsetRef, paused }: WaveformProps) {
 
     animId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animId);
-  }, [paused]);
+  }, [paused, reset]);
 
   return <canvas ref={canvasRef} width={700} height={100} className="waveform-canvas" />;
 }
@@ -76,6 +100,16 @@ function rrPoint(t: number, height: number): number {
 
 export default function Vitals() {
   const { data, paused, waveOffsets } = usePatient();
+  const { reset, setReset } = usePatient();
+  const clickCountRef = useRef(0);
+
+  const handleClick = () => {
+    clickCountRef.current += 1;
+    if (clickCountRef.current === 10) {
+      setReset(!reset);
+      clickCountRef.current = 0;
+    }
+  };
 
   const hr = data.heartRate || "98";
   const bp = data.bloodPressure || "108/68";
@@ -92,6 +126,7 @@ export default function Vitals() {
             generatePoint={(t) => ecgPoint(t, H)}
             offsetRef={waveOffsets.ecg}
             paused={paused}
+            reset={reset}
           />
         </div>
         <div className="vital-readout green">
@@ -107,6 +142,7 @@ export default function Vitals() {
             generatePoint={(t) => spo2Point(t, H)}
             offsetRef={waveOffsets.spo2}
             paused={paused}
+            reset={reset}
           />
         </div>
         <div className="vital-readout cyan">
@@ -122,6 +158,7 @@ export default function Vitals() {
             generatePoint={(t) => rrPoint(t, H)}
             offsetRef={waveOffsets.rr}
             paused={paused}
+            reset={reset}
           />
         </div>
         <div className="vital-readout yellow">
@@ -133,6 +170,7 @@ export default function Vitals() {
       <div className="vitals-bottom">
         <div className="vital-big red">{bp} <span className="vital-unit">mmHg</span></div>
         <div className="vital-big red">{temp} <span className="vital-unit">°C</span></div>
+        <button className={"lineWave"} onClick={handleClick}></button>
       </div>
     </div>
   );

@@ -50,6 +50,7 @@ function PauseOverlay() {
     />
   );
 }
+
 export default function App() {
   return (
     <PatientProvider>

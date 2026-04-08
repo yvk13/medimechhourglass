@@ -39,6 +39,8 @@ interface PatientContextType {
   setData: (data: PatientData) => void;
   paused: boolean;
   setPaused: (paused: boolean) => void;
+  reset: boolean;
+  setReset: (reset: boolean) => void;
   waveOffsets: WaveOffsets;
 }
 
@@ -48,6 +50,7 @@ export function PatientProvider({ children }: { children: React.ReactNode }) {
     return saved ? JSON.parse(saved) : DEFAULT_DATA;
   });
   const [paused, setPaused] = useState(false);
+  const [reset, setReset] = useState(false);
   const waveOffsets: WaveOffsets = {
     ecg: useRef(0),
     spo2: useRef(0),
@@ -60,7 +63,7 @@ export function PatientProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <PatientContext.Provider value={{ data, setData, paused, setPaused, waveOffsets }}>
+    <PatientContext.Provider value={{ data, setData, paused, setPaused, reset, setReset, waveOffsets }}>
       {children}
     </PatientContext.Provider>
   );

@@ -5,7 +5,7 @@ const GRAVITY = 0.35;
 const JUMP_FORCE = -13;
 const GROUND_Y = 220;
 const DINO_X = 80;
-const INITIAL_SPEED = 4;      
+const INITIAL_SPEED = 4;
 const SPEED_INCREMENT = 0.0004;
 const DINO_W = 66;
 const DINO_H = 70;
@@ -164,7 +164,7 @@ export default function Game() {
       const s = stateRef.current;
 
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = "#111111";
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, W, H);
 
       // // Clouds
@@ -238,16 +238,6 @@ export default function Game() {
             setStatus("dead");
           }
         }
-
-        // test collision hitbox
-        const hPad = 20;
-        const vPad = 24;
-        ctx.strokeStyle = "rgba(255,0,0,0.5)";
-        ctx.strokeRect(DINO_X + hPad, s.dinoY + vPad, DINO_W - hPad * 2, DINO_H - vPad - 8);
-        s.cacti.forEach(c => {
-          ctx.strokeStyle = "rgba(0,255,0,0.5)";
-          ctx.strokeRect(c.x + hPad, groundY - c.h + vPad, c.w - hPad * 2, c.h - vPad);
-        });
       }
 
       // Draw cacti
