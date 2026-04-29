@@ -1,3 +1,7 @@
+Hourglass x Illini MediMech Project
+
+This interface should be used alongside the mouse integrated glasses and is designed specifically for surgeons to use intraoperatively.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
