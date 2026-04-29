@@ -79,6 +79,7 @@ function Waveform({ color, generatePoint, offsetRef, paused, reset }: WaveformPr
   return <canvas ref={canvasRef} width={700} height={100} className="waveform-canvas" />;
 }
 
+//generations ecg waveform
 function ecgPoint(t: number, height: number): number {
   const cycle = t % 80;
   if (cycle < 10) return height / 2 + Math.sin(cycle * 0.3) * 4;
@@ -88,10 +89,12 @@ function ecgPoint(t: number, height: number): number {
   return height / 2 + Math.sin(cycle * 0.1) * 3;
 }
 
+//generations spO2 waveform
 function spo2Point(t: number, height: number): number {
   return height / 2 + Math.sin(t * 0.08) * 35 + Math.sin(t * 0.16) * 10;
 }
 
+//generations respiration rate waveform
 function rrPoint(t: number, height: number): number {
   const base = Math.sin(t * 0.03) * 28;
   const notch = Math.sin(t * 0.09) * 8;
@@ -111,6 +114,7 @@ export default function Vitals() {
     }
   };
 
+  //data labels for each vital
   const hr = data.heartRate || "98";
   const bp = data.bloodPressure || "108/68";
   const spo2 = data.oxygenSat || "98";

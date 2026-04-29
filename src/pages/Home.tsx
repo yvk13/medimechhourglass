@@ -8,15 +8,18 @@ export default function Home() {
     const [editing, setEditing] = useState(false);
     const [draft, setDraft] = useState(data);
 
+    //for changing patient data
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setDraft({ ...draft, [e.target.name]: e.target.value });
     };
 
+    //for saving patient data
     const handleSave = () => {
         setData(draft);
         setEditing(false);
     };
 
+    //for canceling patient data
     const handleCancel = () => {
         setDraft(data);
         setEditing(false);
@@ -66,6 +69,7 @@ export default function Home() {
     );
 }
 
+//structure for patient info displayed on nav bar
 interface FieldProps {
     label: string;
     name: string;

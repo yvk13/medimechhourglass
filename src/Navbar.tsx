@@ -12,16 +12,19 @@ const PAGES = [
 ];
 
 export default function Navbar() {
+  //sets patient info and whether interface is paused
   const { data, paused, setPaused } = usePatient();
+
   const navigate = useNavigate();
   const location = useLocation();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); //determines if dropdown menu is open
   const [hovered, setHovered] = useState<string | null>(null);
   const [time, setTime] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    //sets date
     const update = () => {
       setTime(new Date().toLocaleTimeString("en-US", {
         hour: "numeric",
@@ -34,6 +37,7 @@ export default function Navbar() {
     return () => clearInterval(interval);
   }, []);
 
+  //function for when dropdown menu is down
   useEffect(() => {
     if (open) {
       const activeIndex = PAGES.findIndex(p => p.path === location.pathname);
@@ -47,6 +51,7 @@ export default function Navbar() {
     }
   }, [open]);
 
+  //handles keyboard function with menu
   useEffect(() => {
     if (!open) return;
     const handleKey = (e: KeyboardEvent) => {

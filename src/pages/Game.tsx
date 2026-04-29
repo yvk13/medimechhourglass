@@ -103,6 +103,7 @@ export default function Game() {
     }
   }, []);
 
+  //restart game and variables
   const restartGame = () => {
     stateRef.current = {
       dinoY: GROUND_Y,
@@ -140,6 +141,7 @@ export default function Game() {
       { key: "largeCactus3", w: 150, h: 100 },
     ];
 
+    //generate cactus
     const spawnCactus = (s: typeof stateRef.current) => {
       if (s.cacti.length === 0 || s.cacti[s.cacti.length - 1].x < W - (400 + Math.random() * 350)) {
         const v = cactusVariants[Math.floor(Math.random() * cactusVariants.length)];
@@ -166,13 +168,6 @@ export default function Game() {
       ctx.clearRect(0, 0, W, H);
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, W, H);
-
-      // // Clouds
-      // s.clouds.forEach(c => {
-      //   if (imgs.cloud) ctx.drawImage(imgs.cloud, c.x, c.y, 92, 28);
-      //   if (s.started && !s.gameOver) c.x -= 0.8;
-      //   if (c.x < -100) c.x = W + 50;
-      // });
 
       // Scrolling track
       if (imgs.track) {

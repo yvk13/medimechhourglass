@@ -8,6 +8,7 @@ import Vitals from "./pages/Vitals";
 import Images from "./pages/Images";
 import Model from "./pages/Model";
 import Game from "./pages/Game";
+import Navigation from "./Navigation";
 
 // Locks navigation when paused
 function NavigationLock() {
@@ -58,6 +59,8 @@ export default function App() {
         <NavigationLock />
         <Navbar />
         <PauseOverlay />
+        <Navigation direction="left" />
+        <Navigation direction="right" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/vitals" element={<Vitals />} />

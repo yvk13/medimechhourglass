@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import "./Images.css";
 
+//series of images
 const SERIES = [
   { id: "series1", label: "Series 1", folder: "series1", count: 76, filePattern: (i:number) => `E1154S7I${String(i).padStart(3,"0")}.png`, },
   { id:"series2",label:"Series 2",folder:"series2",count: 100, filePattern: (i: number) => `image_${i + 1}.png` },
@@ -27,6 +28,7 @@ export default function Images() {
     setImageIndex(i => i >= activeSeries.count - 1 ? 0 : i + 1);
   }, [activeSeries.count]);
 
+  //stops scrolling
   const stopScroll = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (holdTimeoutRef.current) clearTimeout(holdTimeoutRef.current);

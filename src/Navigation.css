@@ -1,0 +1,46 @@
+.nav-edge-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 48px;
+  height: 140px;
+  background: rgba(30, 42, 53, 0.5);
+  border: 0.5px solid #2A3F50;
+  cursor: pointer;
+  transition: background 0.15s, width 0.15s;
+}
+
+.nav-edge-btn:hover {
+  background: rgba(42, 63, 80, 0.9);
+  width: 90px;
+}
+
+.nav-edge-left {
+  left: 0;
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+}
+
+.nav-edge-right {
+  right: 0;
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+}
+
+.nav-arrow {
+  font-size: 16px;
+  color: #7EB8D4;
+}
+
+.nav-label {
+  font-size: 11px;
+  color: #A0A8B0;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+}
